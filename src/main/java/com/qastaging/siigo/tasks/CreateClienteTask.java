@@ -54,13 +54,6 @@ public class CreateClienteTask implements Task {
                         .build()
 
         );
-
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
         actor.attemptsTo(
                 EnterTextIntoShadowInput.withText("1062684855")
                         .withHostSelector(CreateClienteUserInterface.SHADOW_INPUT_IDENTIFICATION)
@@ -79,13 +72,40 @@ public class CreateClienteTask implements Task {
         actor.attemptsTo(
                 EnterTextIntoShadowInput.withText("Osorio")
                         .withHostSelector(CreateClienteUserInterface.SHADOW_LAST_NAME)
-                        .withInnerInputSelector(String.valueOf(CreateClienteUserInterface.INPUT_NAME)).and()
+                        .withInnerInputSelector(CreateClienteUserInterface.INPUT_NAME).and()
+        );
+
+        new WebDriverWait(driver, 30)
+                .until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(CreateClienteUserInterface.SHADOW_CITY)));
+
+        actor.attemptsTo(
+                ClickOnShadowElement.onHost(CreateClienteUserInterface.SHADOW_CITY)
+                        .andClickOn(CreateClienteUserInterface.LABEL_CITY)
+                        .build()
+        );
+
+        actor.attemptsTo(
+                EnterTextIntoShadowInput.withText("monteria")
+                        .withHostSelector(CreateClienteUserInterface.SHADOW_CITY)
+                        .withInnerInputSelector(CreateClienteUserInterface.INPUT_CITY).and()
         );
         actor.attemptsTo(
-                JavaScriptClick.on(CreateClienteUserInterface.SAVE_BUTTON)
+                ClickOnShadowElement.onHost(CreateClienteUserInterface.SHADOW_CITY)
+                        .andClickOn(CreateClienteUserInterface.SELECT_AUTO_COMPLETE)
+                        .build()
         );
 
+        actor.attemptsTo(
+                JavaScriptClick.on(
+                        CreateClienteUserInterface.SAVE_BUTTON
+                )
+        );
 
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
 
     }

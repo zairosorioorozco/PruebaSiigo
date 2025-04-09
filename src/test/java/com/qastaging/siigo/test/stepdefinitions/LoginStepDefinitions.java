@@ -1,6 +1,7 @@
 package com.qastaging.siigo.test.stepdefinitions;
 
 import com.qastaging.siigo.interactions.OpenTheBrowserWeb;
+import com.qastaging.siigo.tasks.CreateClientValidations;
 import com.qastaging.siigo.tasks.CreateClienteTask;
 import com.qastaging.siigo.tasks.SetLoginTask;
 import com.qastaging.siigo.ui.LoginPageUserInterface;
@@ -47,5 +48,10 @@ public class LoginStepDefinitions {
     @And("^crear cliente$")
     public void crearCliente() {
         theActorInTheSpotlight().attemptsTo(CreateClienteTask.createClient());
+    }
+
+    @Then("^valido cliente creado con exito$")
+    public void validoClienteCreadoConExito() {
+       theActorInTheSpotlight().attemptsTo(CreateClientValidations.validations());
     }
 }

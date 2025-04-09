@@ -8,10 +8,10 @@ import org.junit.runner.RunWith;
 
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
-        features = "src/test/resources/features/loginSiigo.feature",
+        features = "src/test/resources/features/crear_cliente_siigo.feature",
         glue = "com.qastaging.siigo.test.stepdefinitions",
         snippets = SnippetType.CAMELCASE,
-        tags = "@login"
+        tags = "@CrearCliente"
 )
 public class LoginSiigoRunner {
 }

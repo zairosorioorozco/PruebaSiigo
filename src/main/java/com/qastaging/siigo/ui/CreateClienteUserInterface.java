@@ -19,10 +19,13 @@ public class CreateClienteUserInterface {
 
     public static final String SHADOW_LAST_NAME = "div > div > div:nth-child(1) > div.column.is-7 > div:nth-child(2) > siigo-textfield-web";
     public static final String INPUT_NAME = "input[aria-describedby='my-helper-id']";
-    public static final String SAVE_BUTTON = "button[class='button green filled']";
 
+    public static final String LABEL_CITY = "span[id='spanAutocompletecity']";
+    public static final String SHADOW_CITY = "div > div > div:nth-child(1) > div.column.is-7 > div:nth-child(5) > siigo-autocomplete-web";
+    public static final String INPUT_CITY = "input[name='inputAutocompletecity']";
+    public static final String SELECT_AUTO_COMPLETE = "div[id='divTDAutocompletecity1']";
 
-
+    public static final String SAVE_BUTTON = "#sticky > div.column.title-right > button.button.green.filled";
 
 
 
