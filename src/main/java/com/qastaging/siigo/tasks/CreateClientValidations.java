@@ -15,7 +15,7 @@ public class CreateClientValidations implements Task {
     public <T extends Actor> void performAs(T actor) {
         actor.should(
                 seeThat("The type selection is valid",
-                        CreateClienteValidationQuestions.in(CreateClienteUserInterface.SELECT_LIST_TYPE),
+                        CreateClienteValidationQuestions.in(CreateClienteUserInterface.CONFIRMATION_CREATE_CLIENTE),
                         is(true)
                 )
         );

@@ -100,14 +100,6 @@ public class CreateClienteTask implements Task {
                         CreateClienteUserInterface.SAVE_BUTTON
                 )
         );
-
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-
     }
 
     public static CreateClienteTask createClient() {
