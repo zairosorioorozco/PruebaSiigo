@@ -14,11 +14,19 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.IOException;
+
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 
 public class CreateClienteTask implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
+
+        try {
+            SpecialMethods.configProperties();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         WebDriver driver = BrowseTheWeb.as(actor).getDriver();
         new WebDriverWait(driver, 30)
@@ -55,7 +63,7 @@ public class CreateClienteTask implements Task {
 
         );
         actor.attemptsTo(
-                EnterTextIntoShadowInput.withText("1062684855")
+                EnterTextIntoShadowInput.withText(SpecialMethods.properties.getProperty("identify"))
                         .withHostSelector(CreateClienteUserInterface.SHADOW_INPUT_IDENTIFICATION)
                         .withInnerInputSelector(CreateClienteUserInterface.INPUT_IDENTIFICATION).and()
         );
@@ -65,12 +73,12 @@ public class CreateClienteTask implements Task {
                 .until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(CreateClienteUserInterface.SHADOW_NAME)));
 
         actor.attemptsTo(
-                EnterTextIntoShadowInput.withText("Zair")
+                EnterTextIntoShadowInput.withText(SpecialMethods.properties.getProperty("name"))
                         .withHostSelector(CreateClienteUserInterface.SHADOW_NAME)
                         .withInnerInputSelector(String.valueOf(CreateClienteUserInterface.INPUT_NAME)).and()
         );
         actor.attemptsTo(
-                EnterTextIntoShadowInput.withText("Osorio")
+                EnterTextIntoShadowInput.withText(SpecialMethods.properties.getProperty("lastname"))
                         .withHostSelector(CreateClienteUserInterface.SHADOW_LAST_NAME)
                         .withInnerInputSelector(CreateClienteUserInterface.INPUT_NAME).and()
         );
@@ -85,7 +93,7 @@ public class CreateClienteTask implements Task {
         );
 
         actor.attemptsTo(
-                EnterTextIntoShadowInput.withText("monteria")
+                EnterTextIntoShadowInput.withText(SpecialMethods.properties.getProperty("city"))
                         .withHostSelector(CreateClienteUserInterface.SHADOW_CITY)
                         .withInnerInputSelector(CreateClienteUserInterface.INPUT_CITY).and()
         );
