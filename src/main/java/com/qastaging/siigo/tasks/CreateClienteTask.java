@@ -1,10 +1,14 @@
 package com.qastaging.siigo.tasks;
 
 import com.qastaging.siigo.interactions.ClickOnShadowElement;
+import com.qastaging.siigo.interactions.EnterTextIntoShadowInput;
 import com.qastaging.siigo.ui.CreateClienteUserInterface;
+import com.qastaging.siigo.ui.LoginPageUserInterface;
+import com.qastaging.siigo.utils.SpecialMethods;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
+import net.serenitybdd.screenplay.actions.JavaScriptClick;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -23,14 +27,67 @@ public class CreateClienteTask implements Task {
         actor.attemptsTo(
                 ClickOnShadowElement.onHost(CreateClienteUserInterface.SHADOW_CREATE_BUTTON)
                         .andClickOn(CreateClienteUserInterface.CREATE_BUTTON)
-                        .build()
-        );
-
-        actor.attemptsTo(
+                        .build(),
                 ClickOnShadowElement.onHost(CreateClienteUserInterface.SHADOW_CREATE_BUTTON)
                         .andClickOn(CreateClienteUserInterface.CLIENTE_BUTTON)
                         .build()
         );
+
+        new WebDriverWait(driver, 30)
+                .until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(CreateClienteUserInterface.SHADOW_TYPE_SELECT)));
+
+        actor.attemptsTo(
+                ClickOnShadowElement.onHost(CreateClienteUserInterface.SHADOW_TYPE_SELECT)
+                        .andClickOn(CreateClienteUserInterface.TYPE_SELECT)
+                        .build(),
+                ClickOnShadowElement.onHost(CreateClienteUserInterface.SHADOW_TYPE_IDENTIFY)
+                        .andClickOn(String.valueOf(CreateClienteUserInterface.SELECT_PERSON_TYPE.of("Es persona")))
+                        .build()
+        );
+
+        actor.attemptsTo(
+                ClickOnShadowElement.onHost(CreateClienteUserInterface.SHADOW_TYPE_IDENTIFY)
+                        .andClickOn(CreateClienteUserInterface.SELECT_TYPE)
+                        .build(),
+                ClickOnShadowElement.onHost(CreateClienteUserInterface.SHADOW_TYPE_IDENTIFY)
+                        .andClickOn(String.valueOf(CreateClienteUserInterface.SELECT_LIST_TYPE.of("Cédula de ciudadanía")))
+                        .build()
+
+        );
+
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        actor.attemptsTo(
+                EnterTextIntoShadowInput.withText("1062684855")
+                        .withHostSelector(CreateClienteUserInterface.SHADOW_INPUT_IDENTIFICATION)
+                        .withInnerInputSelector(CreateClienteUserInterface.INPUT_IDENTIFICATION).and()
+        );
+
+
+        new WebDriverWait(driver, 30)
+                .until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(CreateClienteUserInterface.SHADOW_NAME)));
+
+        actor.attemptsTo(
+                EnterTextIntoShadowInput.withText("Zair")
+                        .withHostSelector(CreateClienteUserInterface.SHADOW_NAME)
+                        .withInnerInputSelector(String.valueOf(CreateClienteUserInterface.INPUT_NAME)).and()
+        );
+        actor.attemptsTo(
+                EnterTextIntoShadowInput.withText("Osorio")
+                        .withHostSelector(CreateClienteUserInterface.SHADOW_LAST_NAME)
+                        .withInnerInputSelector(String.valueOf(CreateClienteUserInterface.INPUT_NAME)).and()
+        );
+        actor.attemptsTo(
+                JavaScriptClick.on(CreateClienteUserInterface.SAVE_BUTTON)
+        );
+
+
+
+
     }
 
     public static CreateClienteTask createClient() {
