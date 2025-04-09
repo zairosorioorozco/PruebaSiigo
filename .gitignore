@@ -1,0 +1,63 @@
+HELP.md
+.gradle
+gradlew
+.DS_Store
+build/
+target/
+/WebDrivers/
+/local/
+__pycache__/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+
+/evidencias/
+/evidencias/0listo/1030/cucumber-report.html
+/evidencias/0listo/1030/cucumber-report.json
+/reports/cucumber-report-junit.xml
+/reports/pretty.txt
+/reports/rerun.txt
+/reports/usage.json
+/reports/
+/src/test/resources/ErrorScreen/
+/reportsJira/
+/jira/
+src/test/resources/features
+
+#Archivos config base
+/src/main/resources/locator/*
+build.gradle
+src/main/resources/application.yml
+
+##features
+/src/test/resources/features/*
