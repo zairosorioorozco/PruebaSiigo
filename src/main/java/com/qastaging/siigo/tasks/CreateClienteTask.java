@@ -29,29 +29,7 @@ public class CreateClienteTask implements Task {
         }
 
         WebDriver driver = BrowseTheWeb.as(actor).getDriver();
-        new WebDriverWait(driver, 30)
-                .until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(CreateClienteUserInterface.SHADOW_CREATE_BUTTON)));
 
-        actor.attemptsTo(
-                ClickOnShadowElement.onHost(CreateClienteUserInterface.SHADOW_CREATE_BUTTON)
-                        .andClickOn(CreateClienteUserInterface.CREATE_BUTTON)
-                        .build(),
-                ClickOnShadowElement.onHost(CreateClienteUserInterface.SHADOW_CREATE_BUTTON)
-                        .andClickOn(CreateClienteUserInterface.CLIENTE_BUTTON)
-                        .build()
-        );
-
-        new WebDriverWait(driver, 30)
-                .until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(CreateClienteUserInterface.SHADOW_TYPE_SELECT)));
-
-        actor.attemptsTo(
-                ClickOnShadowElement.onHost(CreateClienteUserInterface.SHADOW_TYPE_SELECT)
-                        .andClickOn(CreateClienteUserInterface.TYPE_SELECT)
-                        .build(),
-                ClickOnShadowElement.onHost(CreateClienteUserInterface.SHADOW_TYPE_IDENTIFY)
-                        .andClickOn(String.valueOf(CreateClienteUserInterface.SELECT_PERSON_TYPE.of("Es persona")))
-                        .build()
-        );
 
         actor.attemptsTo(
                 ClickOnShadowElement.onHost(CreateClienteUserInterface.SHADOW_TYPE_IDENTIFY)

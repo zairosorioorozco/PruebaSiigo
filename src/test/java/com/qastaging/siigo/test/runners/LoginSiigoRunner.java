@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features/crear_cliente_siigo.feature",
         glue = "com.qastaging.siigo.test.stepdefinitions",
         snippets = SnippetType.CAMELCASE,
-        tags = "@CrearCliente"
+        tags = ""
 )
 public class LoginSiigoRunner {
 }
